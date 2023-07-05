@@ -6,7 +6,7 @@ We present **Batch Swap**, enhanced by **Chainlink Automation**.  It is anti-san
 
 <p align="center">
   <a href="https://github.com/yexlab/ETH_SH_hackathon" target="_blank">GitHub</a> •
-  <a href="https://youtu.be/_nhJQM-oWD4" target="_blank">demo video</a> •
+  <a href="https://www.youtube.com/watch?v=Qx4JeSZRe8o" target="_blank">demo video</a> •
   <a href="https://raw.githubusercontent.com/yexlab/ETH_SH_hackathon/main/docs/BatchSwapDemo.pdf" target="_blank">slides</a> •
   <a href="https://yexlab.vercel.app/demo1_swap" target="_blank">demo page</a> 
 </p>
