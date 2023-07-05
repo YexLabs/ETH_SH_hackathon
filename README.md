@@ -1,6 +1,6 @@
 # **ETH_Shanghai_hackathon_demo**
 
-This repo is for ETH_Shanghai hackathon demo of YexLab.
+This repo is for the ETH_Shanghai hackathon demo of YexLab.
 
 We present **Batch Swap**, enhanced by **Chainlink Automation**.  It is anti-sandwich attacks, order-independent and uses AMM less to reduce slippage. It works just like a traditional swap in the users' view, all details are hind in the backend and automatically executed by  **Chainlink Automation**.
 
@@ -17,21 +17,21 @@ There are two known problems with AMM:
 
 ### **Slippage**
 
-When the liquidity depth is not enough,  It will cause significant slippage in some transaction. 
+When the liquidity depth is not enough,  It will cause significant slippage in some transactions. 
 
-If two swaps with same amount come in different directions at the same time, According to AMM formula, It will return to the initial position, and the price of the first swap will be unfair.
+If two swaps with the same amount come in different directions at the same time, According to the AMM formula, It will return to the initial position, and the price of the first swap will be unfair.
 
 This makes sense because the first swap bumps up the price and took the slippage, and the latter swap needs to accept the higher price.
 
-If two people swap tokens in opposite directions with each other, then there will be no slippage. In reality. If person A have a large amount of tokens to sell, let's assume this amount to be 1000 ETH, then the tolerance of person A to big slippage is low because of the large value. If person A use a **Batch Auction** mechanism to swap, it would enforce this person A to wait for a while for a new person B to buy the ETH from him. this Batch Auction procedure can eliminate or reduce the occurence of the slippage.
+If two people swap tokens in opposite directions with each other, then there will be no slippage. In reality. If person A has a large amount of the token to sell, let's assume this amount to be 1000 ETH, then the tolerance of person A to the big slippage is low because of the large value. If person A use a **Batch Auction** mechanism to swap, it would enforce this person A to wait for a while for a new person B to buy the ETH from him. this Batch Auction procedure can eliminate or reduce the occurrence of the slippage.
 
 ### **Sandwich Attack**
 
 attackers exploit market and liquidity imbalances to execute profitable trades at the expense of victims or vulnerable traders. The attacker front-runs the victim's trade, hikes the prices, and makes the victim buy at a higher price.
 
-The first transaction will bump up the price and let the second transaction(which we refer as victim's)to be executed at a higher price. The attacker sell token in the third transaction and take the profit from it.
+The first transaction will bump up the price and let the second transaction(which we refer as the victim's)to be executed at a higher price. The attacker sells the token in the third transaction and takes the profit from it.
 
-🥪 attack is a very common MEV approach that actually caused by slippage of AMMs as well.
+🥪 attack is a very common MEV approach that actually caused by the slippage of AMMs as well.
 
 
 ## **Solutions**
@@ -63,7 +63,7 @@ The benefits of this are obvious, and direct exchange is always the most cost-ef
 
 ### **A2MM**
 
-But **Batch Auction** is not enough, if the demand is asymmetric, the excess demand will go to the AMM, where the attacker can still take advantage of. 
+But **Batch Auction** is not enough, if the demand is asymmetric, the excess demand will go to the AMM, which the attacker can still take advantage of. 
 
 So we implemented an **A2MM** aggregator, that is, aggregated the liquidity of multiple AMMs, and only selected one with the best price when a swap execute. This means that an attacker would have to attack multiple AMMs simultaneously to affect this transaction.
 
@@ -77,9 +77,9 @@ Chainlink Automation is the infrastructure of batch swap:
 
 * Create time windows and check that the swap volume and timestamp in a batch meet the requirements.
 * Calculate the best price AMM then to do swap for tokens to balance demand.
-* Automatic distribution tokens -- users do not need to wait for results and claim token, token will be automatically withdrawn to users' account.
+* Automatic distribution tokens -- users do not need to wait for results and claim tokens, tokens will be automatically withdrawn to users' accounts.
 
-Chainlink Automation allows us to automate the process: control the swap, choose a right time to match the balanced demand directly, and choose a best AMM to swap the excess demand.
+Chainlink Automation allows us to automate the process: control the swap, choose the right time to match the balanced demand directly, and choose the best AMM to swap the excess demand.
 
 Finally, Chainlink Automation can also automatically distribute tokens, letting users free from a claim. This minimizes the gas fee on the user side and achieves the best user experience by reducing the number of interactions.
 
@@ -98,4 +98,4 @@ In our demo, the price is obtained by sorting multiple aggregated AMMs. If we ha
 
 ## **What's next for YexLab**
 
-YexLab is a research based team that focuses on the prototypes of DeFi and DAO products. We will deliver the customized  **Batch Swap** solutions for our partners [Splatter Protocol](https://www.splatterprotocol.xyz/) and [Honeypot Finance](https://twitter.com/honeypotfinance).
+YexLab is a research-based team that focuses on the prototypes of DeFi and DAO products. We will deliver the customized  **Batch Swap** solutions for our partners [Splatter Protocol](https://www.splatterprotocol.xyz/) and [Honeypot Finance](https://twitter.com/honeypotfinance).
